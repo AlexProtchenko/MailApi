@@ -1,0 +1,62 @@
+Index: MailApi/Program.cs
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>var builder = WebApplication.CreateBuilder(args);\nvar app = builder.Build();\n\napp.MapGet(\"/\", () => \"Hello World!\");\n\napp.Run();
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/MailApi/Program.cs b/MailApi/Program.cs
+--- a/MailApi/Program.cs	(revision 19d84a24f8e134aa98ed0c77c58055ba30a60d99)
++++ b/MailApi/Program.cs	(date 1651078431533)
+@@ -1,6 +1,16 @@
+-var builder = WebApplication.CreateBuilder(args);
+-var app = builder.Build();
++using Microsoft.AspNetCore;
+ 
+-app.MapGet("/", () => "Hello World!");
++namespace MailApi
++{
++    public class Program
++    {
++        public static void Main(string[] args)
++        {
++            CreateWebHostBuilder(args).Build().Run();
++        }
+ 
+-app.Run();
+\ No newline at end of file
++        public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
++            WebHost.CreateDefaultBuilder(args)
++                .UseStartup<Startup>();
++    }
++}
+\ No newline at end of file
+Index: MailApi/MailApi.csproj
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><Project Sdk=\"Microsoft.NET.Sdk.Web\">\n\n    <PropertyGroup>\n        <TargetFramework>net6.0</TargetFramework>\n        <Nullable>enable</Nullable>\n        <ImplicitUsings>enable</ImplicitUsings>\n    </PropertyGroup>\n\n</Project>\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/MailApi/MailApi.csproj b/MailApi/MailApi.csproj
+--- a/MailApi/MailApi.csproj	(revision 19d84a24f8e134aa98ed0c77c58055ba30a60d99)
++++ b/MailApi/MailApi.csproj	(date 1651078431523)
+@@ -6,4 +6,18 @@
+         <ImplicitUsings>enable</ImplicitUsings>
+     </PropertyGroup>
+ 
++    <ItemGroup>
++      <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
++      <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.4" />
++      <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.4">
++        <PrivateAssets>all</PrivateAssets>
++        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
++      </PackageReference>
++      <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.4">
++        <PrivateAssets>all</PrivateAssets>
++        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
++      </PackageReference>
++      <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="6.0.4" />
++    </ItemGroup>
++
+ </Project>
