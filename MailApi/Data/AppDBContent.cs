@@ -1,7 +1,7 @@
+using MailApi.Data.Models;
 using Microsoft.EntityFrameworkCore;
-using Shop.Data.Models;
 
-namespace Shop.Data;
+namespace MailApi.Data;
 
 
 public class AppDBContent : DbContext
@@ -10,6 +10,6 @@ public class AppDBContent : DbContext
     {
         
     }
-    public DbSet<Car> Car { get; set; }
-    public DbSet<Category> Categoty { get; set; }
+    public DbSet<User> User { get; set; }
+    public DbSet<Department> Department { get; set; }
 }

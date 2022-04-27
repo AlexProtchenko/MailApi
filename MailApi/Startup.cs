@@ -1,5 +1,5 @@
+using MailApi.Data;
 using Microsoft.EntityFrameworkCore;
-using Shop.Data;
 
 
 namespace MailApi
