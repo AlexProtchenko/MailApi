@@ -4,9 +4,9 @@ namespace MailApi.Data.Interfaces;
 
 public interface IMail
 {
-    void Delete(User selectedItem);
-    bool Delete(Department selectedItem);
+    void Delete(User id);
+    bool Delete(Department id);
 
-    void Add(User contact);
-    void Add(Department department);
+    void Add(User id);
+    void Add(Department id);
 }

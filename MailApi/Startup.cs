@@ -1,4 +1,6 @@
 using MailApi.Data;
+using MailApi.Data.Interfaces;
+using MailApi.Data.Repository;
 using Microsoft.EntityFrameworkCore;
 
 
@@ -17,6 +19,7 @@ namespace MailApi
             services.AddDbContext<AppDBContent>(options => options.UseNpgsql(_confstring.GetConnectionString("DefaultConnection")));
             services.AddMvc();
             services.AddMvc(options => options.EnableEndpointRouting = false);
+            services.AddTransient<IMail, SqlRepository>(); 
         }
 
         public void Configure(IApplicationBuilder app, IHostEnvironment env) 
