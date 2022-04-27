@@ -2,11 +2,11 @@ namespace MailApi.Data.Models;
 
 public class User
 {
-    public int UserId;
+    public int UserId { get; set; }
 
-    public string Name;
+    public string Name { get; set; }
 
-    public string Desc;
+    public string Desc { get; set; }
     
     public List<Department> Departments { get; set; } = new List<Department>();
 }
