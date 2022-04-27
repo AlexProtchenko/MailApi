@@ -12,14 +12,20 @@ public class SqlRepository : IMail
         this.appDbContent = appDbContent;
     }
     
-    public void Delete(User id)
+    public void Delete(User value)
     {
-        throw new NotImplementedException();
+        User user = appDbContent.Users.Where(o => o.UserId == value.UserId).FirstOrDefault();
+
+        appDbContent.Users.Remove(user);
+        appDbContent.SaveChanges();
     }
 
-    public bool Delete(Department id)
+    public void Delete(Department value)
     {
-        throw new NotImplementedException();
+        Department department = appDbContent.Departments.Where(o => o.DepartmentId == value.DepartmentId).FirstOrDefault();
+
+        appDbContent.Departments.Remove(department);
+        appDbContent.SaveChanges();
     }
 
     public void Add(User value)

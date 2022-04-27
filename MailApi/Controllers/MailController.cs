@@ -15,16 +15,30 @@ public class MailController : Controller
     }
 
     [HttpPost("add/user")]
-    public JsonResult AddUser([FromBody]User value)
+    public JsonResult AddUser([FromBody] User value)
+    {
+        _repo.Add(value);
+        return Json(value);
+    }
+    
+    [HttpDelete("del/user")]
+    public JsonResult DelUser([FromBody] User value)
+    {
+        _repo.Delete(value);
+        return Json(value);
+    }
+
+    [HttpPost("add/department")]
+    public JsonResult AddDepartment([FromBody] Department value)
     {
         _repo.Add(value);
         return Json(value);
     }
 
-    [HttpPost("add/department")]
-    public JsonResult AddDepartmen([FromBody]Department value)
+    [HttpDelete("del/department")]
+    public JsonResult DelDepartment([FromBody] Department value)
     {
-        _repo.Add(value);
+        _repo.Delete(value);
         return Json(value);
     }
 }
