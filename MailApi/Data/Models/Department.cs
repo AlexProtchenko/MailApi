@@ -6,5 +6,5 @@ public class Department
 
     public string Name { get; set; }
     
-    public List<User> Users { get; set; } = new List<User>();
+    public List<User> Users { get; set; }
 }

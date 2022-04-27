@@ -8,5 +8,7 @@ public class User
 
     public string Desc { get; set; }
     
-    public List<Department> Departments { get; set; } = new List<Department>();
+    public int DepartmentId { get; set; } 
+    
+    public Department Department { get; set; }
 }

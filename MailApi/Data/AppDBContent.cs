@@ -10,6 +10,6 @@ public class AppDBContent : DbContext
     {
         
     }
-    public DbSet<User> User { get; set; }
-    public DbSet<Department> Department { get; set; }
+    public DbSet<User> Users { get; set; }
+    public DbSet<Department> Departments { get; set; }
 }

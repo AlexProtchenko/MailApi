@@ -3,9 +3,9 @@
   <database-model serializer="dbm" dbms="POSTGRES" family-id="POSTGRES" format-version="4.32">
     <root id="1">
       <DateStyle>mdy</DateStyle>
-      <IntrospectionStateNumber>766</IntrospectionStateNumber>
+      <IntrospectionStateNumber>788</IntrospectionStateNumber>
       <ServerVersion>14.2</ServerVersion>
-      <StartupTime>1651077883</StartupTime>
+      <StartupTime>1651098832</StartupTime>
       <TimeZones>true ACDT
 true ACSST
 false ACST
@@ -1395,10 +1395,10 @@ true posixrules
 13391||10|C|G
 13391||-9223372036854775808|U|G
 13391||10|U|G</Grants>
-      <IntrospectionStateNumber>767</IntrospectionStateNumber>
+      <IntrospectionStateNumber>789</IntrospectionStateNumber>
       <ObjectId>16384</ObjectId>
-      <Relations>sequence|table|16390|16391|1
-sequence|table|16398|16399|1
+      <Relations>sequence|table|16438|16439|1
+sequence|table|16446|16447|1
 </Relations>
       <OwnerName>postgres</OwnerName>
     </database>
@@ -4824,198 +4824,154 @@ sequence|table|16398|16399|1
     <schema id="262" parent="2" name="public">
       <Comment>standard public schema</Comment>
       <Current>1</Current>
-      <IntrospectionStateNumber>767</IntrospectionStateNumber>
+      <IntrospectionStateNumber>789</IntrospectionStateNumber>
       <ObjectId>2200</ObjectId>
       <StateNumber>527</StateNumber>
       <OwnerName>postgres</OwnerName>
     </schema>
     <sequence id="263" parent="262" name="Departments_DepartmentId_seq">
       <DataType>integer|0s</DataType>
-      <ObjectId>16390</ObjectId>
-      <StateNumber>739</StateNumber>
+      <ObjectId>16438</ObjectId>
+      <StateNumber>782</StateNumber>
       <OwnerName>postgres</OwnerName>
     </sequence>
     <sequence id="264" parent="262" name="Users_UserId_seq">
       <DataType>integer|0s</DataType>
-      <ObjectId>16398</ObjectId>
-      <StateNumber>739</StateNumber>
+      <ObjectId>16446</ObjectId>
+      <StateNumber>782</StateNumber>
       <OwnerName>postgres</OwnerName>
     </sequence>
-    <table id="265" parent="262" name="DepartmentUser">
-      <ObjectId>16406</ObjectId>
-      <StateNumber>739</StateNumber>
+    <table id="265" parent="262" name="Departments">
+      <ObjectId>16439</ObjectId>
+      <StateNumber>782</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>postgres</OwnerName>
     </table>
-    <table id="266" parent="262" name="Departments">
-      <ObjectId>16391</ObjectId>
-      <StateNumber>739</StateNumber>
+    <table id="266" parent="262" name="Users">
+      <ObjectId>16447</ObjectId>
+      <StateNumber>782</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>postgres</OwnerName>
     </table>
-    <table id="267" parent="262" name="Users">
-      <ObjectId>16399</ObjectId>
-      <StateNumber>739</StateNumber>
-      <AccessMethodId>2</AccessMethodId>
-      <OwnerName>postgres</OwnerName>
-    </table>
-    <table id="268" parent="262" name="__EFMigrationsHistory">
+    <table id="267" parent="262" name="__EFMigrationsHistory">
       <ObjectId>16385</ObjectId>
       <StateNumber>738</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>postgres</OwnerName>
     </table>
-    <column id="269" parent="265" name="DepartmentsDepartmentId">
+    <column id="268" parent="265" name="DepartmentId">
       <DataType>integer|0s</DataType>
+      <IdentityKind>by-default</IdentityKind>
       <NotNull>1</NotNull>
       <Position>1</Position>
-      <StateNumber>739</StateNumber>
+      <StateNumber>782</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="270" parent="265" name="UsersUserId">
-      <DataType>integer|0s</DataType>
+    <column id="269" parent="265" name="Name">
+      <DataType>text|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
-      <StateNumber>739</StateNumber>
+      <StateNumber>782</StateNumber>
+      <TypeId>25</TypeId>
+    </column>
+    <index id="270" parent="265" name="PK_Departments">
+      <ClassIds>1978</ClassIds>
+      <ColNames>DepartmentId</ColNames>
+      <CollationIds>0</CollationIds>
+      <ObjectId>16444</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>782</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <key id="271" parent="265" name="PK_Departments">
+      <ColNames>DepartmentId</ColNames>
+      <ObjectId>16445</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>782</StateNumber>
+      <UnderlyingIndexId>16444</UnderlyingIndexId>
+    </key>
+    <column id="272" parent="266" name="UserId">
+      <DataType>integer|0s</DataType>
+      <IdentityKind>by-default</IdentityKind>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StateNumber>782</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <foreign-key id="271" parent="265" name="FK_DepartmentUser_Departments_DepartmentsDepartmentId">
-      <ColNames>DepartmentsDepartmentId</ColNames>
-      <ObjectId>16411</ObjectId>
+    <column id="273" parent="266" name="Name">
+      <DataType>text|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+      <StateNumber>782</StateNumber>
+      <TypeId>25</TypeId>
+    </column>
+    <column id="274" parent="266" name="Desc">
+      <DataType>text|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+      <StateNumber>782</StateNumber>
+      <TypeId>25</TypeId>
+    </column>
+    <column id="275" parent="266" name="DepartmentId">
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+      <StateNumber>782</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <foreign-key id="276" parent="266" name="FK_Users_Departments_DepartmentId">
+      <ColNames>DepartmentId</ColNames>
+      <ObjectId>16454</ObjectId>
       <OnDelete>cascade</OnDelete>
       <RefColNames>DepartmentId</RefColNames>
       <RefColPositions>1</RefColPositions>
       <RefKeyName>PK_Departments</RefKeyName>
-      <StateNumber>739</StateNumber>
-      <RefTableId>16391</RefTableId>
+      <StateNumber>782</StateNumber>
+      <RefTableId>16439</RefTableId>
       <RefTableName>Departments</RefTableName>
       <RefTableKind>table</RefTableKind>
     </foreign-key>
-    <foreign-key id="272" parent="265" name="FK_DepartmentUser_Users_UsersUserId">
-      <ColNames>UsersUserId</ColNames>
-      <ObjectId>16416</ObjectId>
-      <OnDelete>cascade</OnDelete>
-      <RefColNames>UserId</RefColNames>
-      <RefColPositions>1</RefColPositions>
-      <RefKeyName>PK_Users</RefKeyName>
-      <StateNumber>739</StateNumber>
-      <RefTableId>16399</RefTableId>
-      <RefTableName>Users</RefTableName>
-      <RefTableKind>table</RefTableKind>
-    </foreign-key>
-    <index id="273" parent="265" name="PK_DepartmentUser">
-      <ClassIds>1978,1978</ClassIds>
-      <ColNames>DepartmentsDepartmentId
-UsersUserId</ColNames>
-      <CollationIds>0,0</CollationIds>
-      <ObjectId>16409</ObjectId>
-      <Primary>1</Primary>
-      <StateNumber>739</StateNumber>
-      <Unique>1</Unique>
-      <AccessMethodId>403</AccessMethodId>
-    </index>
-    <index id="274" parent="265" name="IX_DepartmentUser_UsersUserId">
-      <ClassIds>1978</ClassIds>
-      <ColNames>UsersUserId</ColNames>
-      <CollationIds>0</CollationIds>
-      <ObjectId>16421</ObjectId>
-      <StateNumber>739</StateNumber>
-      <AccessMethodId>403</AccessMethodId>
-    </index>
-    <key id="275" parent="265" name="PK_DepartmentUser">
-      <ColNames>DepartmentsDepartmentId
-UsersUserId</ColNames>
-      <ObjectId>16410</ObjectId>
-      <Primary>1</Primary>
-      <StateNumber>739</StateNumber>
-      <UnderlyingIndexId>16409</UnderlyingIndexId>
-    </key>
-    <column id="276" parent="266" name="DepartmentId">
-      <DataType>integer|0s</DataType>
-      <IdentityKind>by-default</IdentityKind>
-      <NotNull>1</NotNull>
-      <Position>1</Position>
-      <StateNumber>739</StateNumber>
-      <TypeId>23</TypeId>
-    </column>
-    <column id="277" parent="266" name="DepartmentName">
-      <DataType>text|0s</DataType>
-      <NotNull>1</NotNull>
-      <Position>2</Position>
-      <StateNumber>739</StateNumber>
-      <TypeId>25</TypeId>
-    </column>
-    <index id="278" parent="266" name="PK_Departments">
-      <ClassIds>1978</ClassIds>
-      <ColNames>DepartmentId</ColNames>
-      <CollationIds>0</CollationIds>
-      <ObjectId>16396</ObjectId>
-      <Primary>1</Primary>
-      <StateNumber>739</StateNumber>
-      <Unique>1</Unique>
-      <AccessMethodId>403</AccessMethodId>
-    </index>
-    <key id="279" parent="266" name="PK_Departments">
-      <ColNames>DepartmentId</ColNames>
-      <ObjectId>16397</ObjectId>
-      <Primary>1</Primary>
-      <StateNumber>739</StateNumber>
-      <UnderlyingIndexId>16396</UnderlyingIndexId>
-    </key>
-    <column id="280" parent="267" name="UserId">
-      <DataType>integer|0s</DataType>
-      <IdentityKind>by-default</IdentityKind>
-      <NotNull>1</NotNull>
-      <Position>1</Position>
-      <StateNumber>739</StateNumber>
-      <TypeId>23</TypeId>
-    </column>
-    <column id="281" parent="267" name="Name">
-      <DataType>text|0s</DataType>
-      <NotNull>1</NotNull>
-      <Position>2</Position>
-      <StateNumber>739</StateNumber>
-      <TypeId>25</TypeId>
-    </column>
-    <column id="282" parent="267" name="Desc">
-      <DataType>text|0s</DataType>
-      <NotNull>1</NotNull>
-      <Position>3</Position>
-      <StateNumber>739</StateNumber>
-      <TypeId>25</TypeId>
-    </column>
-    <index id="283" parent="267" name="PK_Users">
+    <index id="277" parent="266" name="PK_Users">
       <ClassIds>1978</ClassIds>
       <ColNames>UserId</ColNames>
       <CollationIds>0</CollationIds>
-      <ObjectId>16404</ObjectId>
+      <ObjectId>16452</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>739</StateNumber>
+      <StateNumber>782</StateNumber>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <key id="284" parent="267" name="PK_Users">
+    <index id="278" parent="266" name="IX_Users_DepartmentId">
+      <ClassIds>1978</ClassIds>
+      <ColNames>DepartmentId</ColNames>
+      <CollationIds>0</CollationIds>
+      <ObjectId>16459</ObjectId>
+      <StateNumber>782</StateNumber>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <key id="279" parent="266" name="PK_Users">
       <ColNames>UserId</ColNames>
-      <ObjectId>16405</ObjectId>
+      <ObjectId>16453</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>739</StateNumber>
-      <UnderlyingIndexId>16404</UnderlyingIndexId>
+      <StateNumber>782</StateNumber>
+      <UnderlyingIndexId>16452</UnderlyingIndexId>
     </key>
-    <column id="285" parent="268" name="MigrationId">
+    <column id="280" parent="267" name="MigrationId">
       <DataType>varchar(150)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StateNumber>738</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="286" parent="268" name="ProductVersion">
+    <column id="281" parent="267" name="ProductVersion">
       <DataType>varchar(32)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
       <StateNumber>738</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <index id="287" parent="268" name="PK___EFMigrationsHistory">
+    <index id="282" parent="267" name="PK___EFMigrationsHistory">
       <ClassIds>3126</ClassIds>
       <ColNames>MigrationId</ColNames>
       <CollationIds>100</CollationIds>
@@ -5026,7 +4982,7 @@ UsersUserId</ColNames>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <key id="288" parent="268" name="PK___EFMigrationsHistory">
+    <key id="283" parent="267" name="PK___EFMigrationsHistory">
       <ColNames>MigrationId</ColNames>
       <ObjectId>16389</ObjectId>
       <Primary>1</Primary>

@@ -21,21 +21,6 @@ namespace MailApi.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("DepartmentUser", b =>
-                {
-                    b.Property<int>("DepartmentsDepartmentId")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("UsersUserId")
-                        .HasColumnType("integer");
-
-                    b.HasKey("DepartmentsDepartmentId", "UsersUserId");
-
-                    b.HasIndex("UsersUserId");
-
-                    b.ToTable("DepartmentUser");
-                });
-
             modelBuilder.Entity("MailApi.Data.Models.Department", b =>
                 {
                     b.Property<int>("DepartmentId")
@@ -50,7 +35,7 @@ namespace MailApi.Migrations
 
                     b.HasKey("DepartmentId");
 
-                    b.ToTable("Department");
+                    b.ToTable("Departments");
                 });
 
             modelBuilder.Entity("MailApi.Data.Models.User", b =>
@@ -60,6 +45,9 @@ namespace MailApi.Migrations
                         .HasColumnType("integer");
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("UserId"));
+
+                    b.Property<int>("DepartmentId")
+                        .HasColumnType("integer");
 
                     b.Property<string>("Desc")
                         .IsRequired()
@@ -71,22 +59,25 @@ namespace MailApi.Migrations
 
                     b.HasKey("UserId");
 
-                    b.ToTable("User");
+                    b.HasIndex("DepartmentId");
+
+                    b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("DepartmentUser", b =>
+            modelBuilder.Entity("MailApi.Data.Models.User", b =>
                 {
-                    b.HasOne("MailApi.Data.Models.Department", null)
-                        .WithMany()
-                        .HasForeignKey("DepartmentsDepartmentId")
+                    b.HasOne("MailApi.Data.Models.Department", "Department")
+                        .WithMany("Users")
+                        .HasForeignKey("DepartmentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("MailApi.Data.Models.User", null)
-                        .WithMany()
-                        .HasForeignKey("UsersUserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.Navigation("Department");
+                });
+
+            modelBuilder.Entity("MailApi.Data.Models.Department", b =>
+                {
+                    b.Navigation("Users");
                 });
 #pragma warning restore 612, 618
         }

@@ -22,10 +22,15 @@ public class SqlRepository : IMail
         throw new NotImplementedException();
     }
 
-    public void Add(User value) => appDbContent.User.AddRange(value);
-
-    public void Add(Department id)
+    public void Add(User value)
     {
-        throw new NotImplementedException();
+        appDbContent.Users.Add(value);
+        appDbContent.SaveChanges();
+    }
+
+    public void Add(Department value)
+    {
+        appDbContent.Departments.Add(value);
+        appDbContent.SaveChanges();
     }
 }
