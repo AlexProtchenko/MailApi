@@ -7,8 +7,8 @@ namespace MailApi.Controllers;
 [Route("api/")]
 public class UserController : Controller
 {
-    private readonly IMail _repo;
-    public UserController(IMail repo)
+    private readonly IContent _repo;
+    public UserController(IContent repo)
     {
         _repo = repo;
     }

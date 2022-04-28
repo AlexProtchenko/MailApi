@@ -18,7 +18,8 @@ namespace MailApi
         public void ConfigureServices(IServiceCollection services) {
             services.AddDbContext<AppDbContent>(options => options.UseNpgsql(_confstring.GetConnectionString("DefaultConnection")));
             services.AddMvc(options => options.EnableEndpointRouting = false);
-            services.AddTransient<IMail, SqlRepository>(); 
+            services.AddTransient<IContent, ContentRepository>(); 
+            services.AddTransient<IGetContent, GetContentRepository>(); 
         }
 
         public void Configure(IApplicationBuilder app, IHostEnvironment env) 

@@ -2,7 +2,7 @@ using MailApi.Data.Models;
 
 namespace MailApi.Data.Interfaces;
 
-public interface IMail
+public interface IContent
 {
     void Delete(User id);
     void Delete(Department id);

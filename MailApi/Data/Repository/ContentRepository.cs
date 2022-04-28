@@ -3,11 +3,11 @@ using MailApi.Data.Models;
 
 namespace MailApi.Data.Repository;
 
-public class SqlRepository : IMail
+public class ContentRepository : IContent
 {
     private readonly AppDbContent _appDbContent;
 
-    public SqlRepository(AppDbContent appDbContent)
+    public ContentRepository(AppDbContent appDbContent)
     {
         _appDbContent = appDbContent;
     }
