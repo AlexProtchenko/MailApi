@@ -1,19 +1,18 @@
 using MailApi.Data.Interfaces;
 using MailApi.Data.Models;
-using MailApi.Data.Repository;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MailApi.Controllers;
 
 [Route("api/")]
-public class MailController : Controller
+public class UserController : Controller
 {
     private readonly IMail _repo;
-    public MailController(IMail repo)
+    public UserController(IMail repo)
     {
         _repo = repo;
     }
-
+    
     [HttpPost("add/user")]
     public JsonResult AddUser([FromBody] User value) // ActionResult
     {
@@ -32,27 +31,6 @@ public class MailController : Controller
     public JsonResult UpdateUser([FromBody] User value)
     {
         _repo.Update(value);
-        return Json(value);
-    }
-    
-    [HttpPut("update/department")]
-    public JsonResult UpdateDepartment([FromBody] Department value)
-    {
-        _repo.Update(value);
-        return Json(value);
-    }
-
-    [HttpPost("add/department")]
-    public JsonResult AddDepartment([FromBody] Department value)
-    {
-        _repo.Add(value);
-        return Json(value);
-    }
-
-    [HttpDelete("del/department")]
-    public JsonResult DelDepartment([FromBody] Department value)
-    {
-        _repo.Delete(value);
         return Json(value);
     }
 }
