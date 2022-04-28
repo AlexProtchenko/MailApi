@@ -21,7 +21,11 @@ public class GetContentRepository : IGetContent
 
     }
 
-    public List<User> GetAllUsers { get; set; }
+    public List<User> GetAllUsers()
+    {
+        List<User> content = _appDbContent.Users.ToList();
+        return content;
+    }
 
     public List<User> GetUserDepartment(User user)
     {

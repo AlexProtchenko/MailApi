@@ -31,4 +31,11 @@ public class GetContentController : Controller
         List<User> content = _repo.GetUserDepartment(value);
         return Json(content);
     }
+    
+    [HttpGet("get/all")]
+    public JsonResult GetAllUsers()
+    {
+        List<User> content = _repo.GetAllUsers();
+        return Json(content);
+    }
 }
