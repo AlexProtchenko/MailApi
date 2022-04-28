@@ -5,10 +5,10 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace MailApi.Controllers;
 
-[Route("api/[controller]")]
+[Route("api/")]
 public class MailController : Controller
 {
-    private IMail _repo;
+    private readonly IMail _repo;
     public MailController(IMail repo)
     {
         _repo = repo;

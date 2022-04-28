@@ -10,7 +10,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace MailApi.Migrations
 {
-    [DbContext(typeof(AppDBContent))]
+    [DbContext(typeof(AppDbContent))]
     [Migration("20220427224640_Initial")]
     partial class Initial
     {

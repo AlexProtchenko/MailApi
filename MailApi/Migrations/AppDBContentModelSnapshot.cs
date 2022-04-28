@@ -9,7 +9,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace MailApi.Migrations
 {
-    [DbContext(typeof(AppDBContent))]
+    [DbContext(typeof(AppDbContent))]
     partial class AppDBContentModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

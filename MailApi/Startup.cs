@@ -16,7 +16,7 @@ namespace MailApi
                 .Build();
         }
         public void ConfigureServices(IServiceCollection services) {
-            services.AddDbContext<AppDBContent>(options => options.UseNpgsql(_confstring.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<AppDbContent>(options => options.UseNpgsql(_confstring.GetConnectionString("DefaultConnection")));
             services.AddMvc();
             services.AddMvc(options => options.EnableEndpointRouting = false);
             services.AddTransient<IMail, SqlRepository>(); 

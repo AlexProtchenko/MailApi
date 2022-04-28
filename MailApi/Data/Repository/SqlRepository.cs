@@ -5,38 +5,38 @@ namespace MailApi.Data.Repository;
 
 public class SqlRepository : IMail
 {
-    private readonly AppDBContent appDbContent;
+    private readonly AppDbContent _appDbContent;
 
-    public SqlRepository(AppDBContent appDbContent)
+    public SqlRepository(AppDbContent appDbContent)
     {
-        this.appDbContent = appDbContent;
+        _appDbContent = appDbContent;
     }
     
     public void Delete(User value)
     {
-        User user = appDbContent.Users.Where(o => o.UserId == value.UserId).FirstOrDefault();
+        User user = _appDbContent.Users.Where(o => o.UserId == value.UserId).FirstOrDefault();
 
-        appDbContent.Users.Remove(user);
-        appDbContent.SaveChanges();
+        _appDbContent.Users.Remove(user);
+        _appDbContent.SaveChanges();
     }
 
     public void Delete(Department value)
     {
-        Department department = appDbContent.Departments.Where(o => o.DepartmentId == value.DepartmentId).FirstOrDefault();
+        Department department = _appDbContent.Departments.Where(o => o.DepartmentId == value.DepartmentId).FirstOrDefault();
 
-        appDbContent.Departments.Remove(department);
-        appDbContent.SaveChanges();
+        _appDbContent.Departments.Remove(department);
+        _appDbContent.SaveChanges();
     }
 
     public void Add(User value)
     {
-        appDbContent.Users.Add(value);
-        appDbContent.SaveChanges();
+        _appDbContent.Users.Add(value);
+        _appDbContent.SaveChanges();
     }
 
     public void Add(Department value)
     {
-        appDbContent.Departments.Add(value);
-        appDbContent.SaveChanges();
+        _appDbContent.Departments.Add(value);
+        _appDbContent.SaveChanges();
     }
 }

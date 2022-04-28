@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore;
 namespace MailApi.Data;
 
 
-public class AppDBContent : DbContext
+public class AppDbContent : DbContext
 {
-    public AppDBContent(DbContextOptions<AppDBContent> options) : base(options)
+    public AppDbContent(DbContextOptions<AppDbContent> options) : base(options)
     {
         
     }
