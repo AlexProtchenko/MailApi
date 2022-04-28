@@ -16,12 +16,19 @@ public class GetContentController : Controller
     }
 
     [HttpGet("get/user")]
-    public ActionResult GetUsersPageable()
+    public JsonResult GetUsersPageable()
     {
         int page = int.Parse(Request.Query["page"]);
         int size = int.Parse(Request.Query["size"]);
         
-        var content = _repo.GetPageableContent(page, size);
+        List<User> content = _repo.GetPageableContent(page, size);
+        return Json(content);
+    }
+    
+    [HttpGet("get/department")]
+    public JsonResult GetUsersDepartment([FromBody] User value)
+    {
+        List<User> content = _repo.GetUserDepartment(value);
         return Json(content);
     }
 }
