@@ -2,7 +2,7 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MailApi", "MailApi\MailApi.csproj", "{6CBA6BF8-44B0-4660-95B9-C8E64402B53D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MailApiUnutTests", "MailApiUnutTests\MailApiUnutTests.csproj", "{E16B4D29-413E-400C-8D80-7A2C48C4F351}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MailApi.Tests", "MailApi.Tests\MailApi.Tests.csproj", "{F3BAB79F-C558-41D8-A160-763F5B985ECC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -14,9 +14,9 @@ Global
 		{6CBA6BF8-44B0-4660-95B9-C8E64402B53D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6CBA6BF8-44B0-4660-95B9-C8E64402B53D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6CBA6BF8-44B0-4660-95B9-C8E64402B53D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E16B4D29-413E-400C-8D80-7A2C48C4F351}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E16B4D29-413E-400C-8D80-7A2C48C4F351}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E16B4D29-413E-400C-8D80-7A2C48C4F351}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E16B4D29-413E-400C-8D80-7A2C48C4F351}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F3BAB79F-C558-41D8-A160-763F5B985ECC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3BAB79F-C558-41D8-A160-763F5B985ECC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3BAB79F-C558-41D8-A160-763F5B985ECC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3BAB79F-C558-41D8-A160-763F5B985ECC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

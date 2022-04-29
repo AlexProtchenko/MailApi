@@ -6,7 +6,7 @@ namespace MailApi.Data;
 
 public class AppDbContent : DbContext
 {
-    public AppDbContent(DbContextOptions<AppDbContent> options) : base(options)
+    public AppDbContent(DbContextOptions options) : base(options)
     {
         
     }
