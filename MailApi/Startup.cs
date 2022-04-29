@@ -8,7 +8,7 @@ namespace MailApi
 {
     public class Startup
     {
-        private IConfigurationRoot _confstring;
+        private readonly IConfigurationRoot _confstring;
 
         public Startup(IHostEnvironment hostEnv)
         {

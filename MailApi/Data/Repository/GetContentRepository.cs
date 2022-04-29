@@ -15,21 +15,20 @@ public class GetContentRepository : IGetContent
 
     public List<User> GetPageableContent(int page, int size)
     {
-        int skip = (page - 1) * size;
-        List<User> content = _appDbContent.Users.Select(x => x).Skip(skip).Take(size).ToList();
+        var skip = (page - 1) * size;
+        var content = _appDbContent.Users.Select(x => x).Skip(skip).Take(size).ToList();
         return content;
-
     }
 
     public List<User> GetAllUsers()
     {
-        List<User> content = _appDbContent.Users.ToList();
+        var content = _appDbContent.Users.ToList();
         return content;
     }
 
     public List<User> GetUserDepartment(User user)
     {
-        List<User> content = _appDbContent.Users.Select(x => x).Where(o => o.DepartmentId == user.DepartmentId)
+        var content = _appDbContent.Users.Select(x => x).Where(o => o.DepartmentId == user.DepartmentId)
             .ToList();
         return content;
     }

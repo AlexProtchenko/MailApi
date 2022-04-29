@@ -14,7 +14,7 @@ public class ContentRepository : IContent
     
     public void Delete(User value)
     {
-        User user = _appDbContent.Users.Where(o => o.UserId == value.UserId).FirstOrDefault();
+        var user = _appDbContent.Users.FirstOrDefault(o => o.UserId == value.UserId);
 
         _appDbContent.Users.Remove(user);
         _appDbContent.SaveChanges();
@@ -22,7 +22,7 @@ public class ContentRepository : IContent
 
     public void Delete(Department value)
     {
-        Department department = _appDbContent.Departments.Where(o => o.DepartmentId == value.DepartmentId).FirstOrDefault();
+        var department = _appDbContent.Departments.FirstOrDefault(o => o.DepartmentId == value.DepartmentId);
 
         _appDbContent.Departments.Remove(department);
         _appDbContent.SaveChanges();
@@ -42,29 +42,24 @@ public class ContentRepository : IContent
 
     public void Update(User value)
     {
-        User user = _appDbContent.Users.Where(c => c.UserId == value.UserId).FirstOrDefault();
+        var user = _appDbContent.Users.FirstOrDefault(c => c.UserId == value.UserId);
 
         if (value.Name != null)
-        {
             user.Name = value.Name;
-        }
 
         if (value.DepartmentId != null)
-        {
             user.DepartmentId = value.DepartmentId;
-        }
+        
 
         if (value.Desc != null)
-        {
             user.Desc = value.Desc;
-        }
-        
+
         _appDbContent.SaveChanges();
     }
 
     public void Update(Department value)
     {
-        Department department = _appDbContent.Departments.Where(c => c.DepartmentId == value.DepartmentId).FirstOrDefault();
+        var department = _appDbContent.Departments.FirstOrDefault(c => c.DepartmentId == value.DepartmentId);
 
         if (value.Name != null)
         {
