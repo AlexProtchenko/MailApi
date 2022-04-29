@@ -8,7 +8,7 @@ namespace MailApi.Tests;
 
 public abstract class TestBase
 {
-    public async Task<AppDbContent> GetDbContext()
+    protected static async Task<AppDbContent> GetDbContext()
     {
         DbContextOptionsBuilder builder = new DbContextOptionsBuilder();
         

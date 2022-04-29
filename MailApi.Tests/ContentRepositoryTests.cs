@@ -26,4 +26,28 @@ public class ContentRepositoryTests : TestBase
         Assert.Contains(data, d => d.DepartmentId == 1);
         Assert.Contains(data, d => d.Name == "Development");
     }
+    
+    [Fact]
+    public async Task AddUserTest()
+    {
+        // Prepare
+        await using var context = await GetDbContext();
+        context.Users.Add(new User
+        {
+            Name = "Alex",
+            Desc = "Python/C#",
+            DepartmentId = 1
+        });
+        await context.SaveChangesAsync();
+
+        // Execute
+        var data = await context.Users.ToListAsync();
+
+        // Assert
+        Assert.Single(data);
+        Assert.Contains(data, d => d.UserId == 1);
+        Assert.Contains(data, d => d.DepartmentId == 1);
+        Assert.Contains(data, d => d.Name == "Alex");
+        Assert.Contains(data, d => d.Desc == "Python/C#");
+    }
 }
