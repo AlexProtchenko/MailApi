@@ -1,25 +1,34 @@
+using System;
+using System.Linq;
 using System.Threading.Tasks;
 using MailApi.Data.Models;
 using Microsoft.EntityFrameworkCore;
 using Xunit;
+using Xunit.Extensions.Ordering;
 
 namespace MailApi.Tests;
 
-public class ContentRepositoryTests : TestBase
+public class DbContentTests : IClassFixture<DbFixture>
 {
-    [Fact]
+    private readonly DbFixture _fixture;
+
+    public DbContentTests(DbFixture fixture)
+    {
+        _fixture = fixture;
+    }
+    
+    [Fact, Order(1)]
     public async Task AddDepartmentTest()
     {
         // Prepare
-        using var context = await GetDbContext();
-        context.Departments.Add(new Department
+        _fixture.Db.Departments.Add(new Department
         {
             Name = "Development",
         });
-        await context.SaveChangesAsync();
+        await _fixture.Db.SaveChangesAsync();
 
         // Execute
-        var data = await context.Departments.ToListAsync();
+        var data = _fixture.Db.Departments.ToList();
 
         // Assert
         Assert.Single(data);
@@ -27,21 +36,20 @@ public class ContentRepositoryTests : TestBase
         Assert.Contains(data, d => d.Name == "Development");
     }
     
-    [Fact]
+    [Fact, Order(2)]
     public async Task AddUserTest()
     {
         // Prepare
-        await using var context = await GetDbContext();
-        context.Users.Add(new User
+        _fixture.Db.Users.Add(new User
         {
             Name = "Alex",
             Desc = "Python/C#",
             DepartmentId = 1
         });
-        await context.SaveChangesAsync();
+        await _fixture.Db.SaveChangesAsync();
 
         // Execute
-        var data = await context.Users.ToListAsync();
+        var data = await _fixture.Db.Users.ToListAsync();
 
         // Assert
         Assert.Single(data);
