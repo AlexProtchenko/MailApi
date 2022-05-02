@@ -1,10 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using MailApi.Data.Models;
 using MailApi.Data.Repository;
-using Microsoft.EntityFrameworkCore;
 using Xunit;
 using Xunit.Extensions.Ordering;
 

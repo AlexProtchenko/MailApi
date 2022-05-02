@@ -8,24 +8,25 @@ namespace MailApi.Tests;
 
 public class DbFixture : IDisposable
 {
+    private readonly AppDbContent _db;
     public DbFixture()
     {
         var builder = new DbContextOptionsBuilder();
         
         builder.UseSqlite("DataSource=:memory:", x => { });
         
-        var content = new AppDbContent(builder.Options);
-        content.Database.OpenConnectionAsync();
-        content.Database.EnsureCreatedAsync();
-        var a = new GetContentRepository(content);
-        var b = new ContentRepository(content);
-        List<dynamic> people = new List<dynamic> { a, b};
+        _db = new AppDbContent(builder.Options);
+        _db.Database.OpenConnectionAsync();
+        _db.Database.EnsureCreatedAsync();
+        var a = new GetContentRepository(_db);
+        var b = new ContentRepository(_db);
+        var people = new List<dynamic> { a, b};
         Repo = people;
     }
 
     public void Dispose()
     {
-        // ... clean up test data from the database ...
+        _db.Dispose();
     }
 
     public List<dynamic> Repo { get; private set; }
