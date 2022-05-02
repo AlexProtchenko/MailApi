@@ -1,7 +1,7 @@
 using System;
-using System.Threading;
+using System.Collections.Generic;
 using MailApi.Data;
-using MailApi.Data.Models;
+using MailApi.Data.Repository;
 using Microsoft.EntityFrameworkCore;
 
 namespace MailApi.Tests;
@@ -14,9 +14,13 @@ public class DbFixture : IDisposable
         
         builder.UseSqlite("DataSource=:memory:", x => { });
         
-        Db = new AppDbContent(builder.Options);
-        Db.Database.OpenConnectionAsync();
-        Db.Database.EnsureCreatedAsync();
+        var content = new AppDbContent(builder.Options);
+        content.Database.OpenConnectionAsync();
+        content.Database.EnsureCreatedAsync();
+        var a = new GetContentRepository(content);
+        var b = new ContentRepository(content);
+        List<dynamic> people = new List<dynamic> { a, b};
+        Repo = people;
     }
 
     public void Dispose()
@@ -24,5 +28,5 @@ public class DbFixture : IDisposable
         // ... clean up test data from the database ...
     }
 
-    public AppDbContent Db { get; private set; }
+    public List<dynamic> Repo { get; private set; }
 }

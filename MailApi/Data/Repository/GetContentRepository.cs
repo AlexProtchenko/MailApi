@@ -32,4 +32,10 @@ public class GetContentRepository : IGetContent
             .ToList();
         return content;
     }
+
+    public List<Department> GetAllDepartments()
+    {
+        var content = _appDbContent.Departments.ToList();
+        return content;
+    }
 }

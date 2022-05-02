@@ -25,7 +25,7 @@ public class GetContentController : Controller
         return Json(content);
     }
     
-    [HttpGet("department")]
+    [HttpGet("user/department")]
     public JsonResult GetUsersDepartment([FromBody] User value)
     {
         var content = _repo.GetUserDepartment(value);
@@ -36,6 +36,13 @@ public class GetContentController : Controller
     public JsonResult GetAllUsers()
     {
         var content = _repo.GetAllUsers();
+        return Json(content);
+    }
+    
+    [HttpGet("department")]
+    public JsonResult GetAllDepartment()
+    {
+        var content = _repo.GetAllDepartments();
         return Json(content);
     }
 }

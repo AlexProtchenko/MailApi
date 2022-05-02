@@ -8,5 +8,7 @@ public interface IGetContent
 
     public List<User> GetAllUsers();
 
+    public List<Department> GetAllDepartments();
+
     public List<User> GetUserDepartment(User user);
 }
