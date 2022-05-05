@@ -7,7 +7,6 @@ using Xunit.Extensions.Ordering;
 
 namespace MailApi.Tests;
 
-[Order(2)]
 public class DbGetContentTests : IClassFixture<DbFixture>
 {
     private readonly ContentRepository _contentRepository;
