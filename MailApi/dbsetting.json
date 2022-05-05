@@ -1,0 +1,5 @@
+{
+  "ConnectionStrings": {
+    "DefaultConnection": "Server=postgres;Database=postgres;User Id=postgres;Password=password"
+}
+}
