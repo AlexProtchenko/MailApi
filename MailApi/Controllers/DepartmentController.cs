@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace MailApi.Controllers;
 
-[Route("api/")]
+[Route("api/department")]
 public class DepartmentController : Controller
 {
     private readonly IContent _repo;
@@ -13,21 +13,21 @@ public class DepartmentController : Controller
         _repo = repo;
     }
 
-    [HttpPut("update/department")]
+    [HttpPut]
     public JsonResult UpdateDepartment([FromBody] Department value)
     {
         _repo.Update(value);
         return Json(value);
     }
 
-    [HttpPost("add/department")]
+    [HttpPost]
     public JsonResult AddDepartment([FromBody] Department value)
     {
         _repo.Add(value);
         return Json(value);
     }
 
-    [HttpDelete("del/department")]
+    [HttpDelete]
     public JsonResult DelDepartment([FromBody] Department value)
     {
         _repo.Delete(value);

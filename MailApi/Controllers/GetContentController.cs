@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace MailApi.Controllers;
 
-[Route("api/get")]
+[Route("api/")]
 public class GetContentController : Controller
 {
     private readonly IGetContent _repo;
@@ -15,7 +15,7 @@ public class GetContentController : Controller
         _repo = repo;
     }
 
-    [HttpGet("user")]
+    [HttpGet("pageable_users")]
     public JsonResult GetUsersPageable()
     {
         var page = int.Parse(Request.Query["page"]);
@@ -25,21 +25,21 @@ public class GetContentController : Controller
         return Json(content);
     }
     
-    [HttpGet("user/department")]
+    [HttpGet("users/department")]
     public JsonResult GetUsersDepartment([FromBody] User value)
     {
         var content = _repo.GetUserDepartment(value);
         return Json(content);
     }
     
-    [HttpGet("all")]
+    [HttpGet("users")]
     public JsonResult GetAllUsers()
     {
         var content = _repo.GetAllUsers();
         return Json(content);
     }
     
-    [HttpGet("department")]
+    [HttpGet("departments")]
     public JsonResult GetAllDepartment()
     {
         var content = _repo.GetAllDepartments();

@@ -27,7 +27,7 @@ dotnet run
 
 ## Routes
 [POST]
-_[http://{host}:{port}/api/add/department]()_ - add new Department to DB
+_[http://{host}:{port}/department]()_ - add new Department to DB
 
 Example for Body content
 ```json
@@ -37,72 +37,72 @@ Example for Body content
 ```
 
 [POST]
-_[http://{host}:{port}/api/add/user]()_ - add new User to DB
+_[http://{host}:{port}/user]()_ - add new User to DB
 
 ```json
 {
   "name": "Bob",
-  "desc": "python",
-  "departmentid": 1
+  "description": "python",
+  "department_id": 1
 }
 ```
 
 [PUT]
-_[http://{host}:{port}/api/update/department]()_ - update Department in DB
+_[http://{host}:{port}/department]()_ - update Department in DB
 
 ```json
 {
-  "DepartmentId": 1,
+  "department_id": 1,
   "name": "Development"
 }
 ```
 
 [PUT]
-_[http://{host}:{port}/api/update/user]()_ - update User in DB
+_[http://{host}:{port}/user]()_ - update User in DB
 
 ```json
 {
-  "UserId": 1,
+  "user_id": 1,
   "name": "Jack",
-  "desc": "c#",
-  "departmentid": 2
+  "description": "c#",
+  "department_id": 2
 }
 ```
 
 [DELETE]
-_[http://{host}:{port}/api/del/department]()_ - delete Department in DB
+_[http://{host}:{port}/api/department]()_ - delete Department in DB
 
 ```json
 {
-  "DepartmentId": 1
+  "department_id": 1
 }
 ```
 
 [DELETE]
-_[http://{host}:{port}/api/del/user]()_ - delete User in DB
+_[http://{host}:{port}/api/user]()_ - delete User in DB
 
 ```json
 {
-  "userid": 1
+  "user_id": 1
 }
 ```
 
 [GET]
-_[http://{host}:{port}/api/get/user/department]()_ - get Users by Department
+_[http://{host}:{port}/api/users/department]()_ - get Users by Department
 
 ```json
 {
-  "DepartmentId": 1
+  "department_id": 1
 }
 ```
 [GET]
-_[http://{host}:{port}/get/user?page=2&size=2]()_ - get pageable Users
+_[http://{host}:{port}/pageable_users?page=1&size=2?page=2&size=2]()_ - get pageable Users
 
 [GET]
-_[http://{host}:{port}/get/all]()_ - get all Users
+_[http://{host}:{port}/users]()_ - get all Users
 
 [GET]
-_[http://{host}:{port}/get/department]()_ - get all Departments
+_[http://{host}:{port}/departments]()_ - get all Departments
 
 ## Database
 
