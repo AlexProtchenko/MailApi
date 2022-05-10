@@ -1,5 +1,6 @@
 using MailApi.Data.Interfaces;
 using MailApi.Data.Models;
+using MailApi.Exceptions;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MailApi.Controllers;
@@ -14,15 +15,20 @@ public class UserController : Controller
     }
     
     [HttpPost]
-    public JsonResult AddUser([FromBody] User value) // ActionResult
+    public JsonResult AddUser([FromBody] User value) 
     {
+        if (value is null | value?.Name is null | value?.DepartmentId == 0)
+            throw new MailException.MailValidationException("Wrong json request");
+        value.Desc ??= "";
         _repo.Add(value);
         return Json(value);
     }
     
     [HttpDelete]
-    public JsonResult DelUser([FromBody] User value) // controller 
+    public JsonResult DelUser([FromBody] User value) 
     {
+        if (value is null | value?.UserId == 0)
+            throw new MailException.MailValidationException("Wrong json request");
         _repo.Delete(value);
         return Json(value);
     }
@@ -30,6 +36,8 @@ public class UserController : Controller
     [HttpPut]
     public JsonResult UpdateUser([FromBody] User value)
     {
+        if (value is null | value?.UserId == 0)
+            throw new MailException.MailValidationException("Wrong json request");
         _repo.Update(value);
         return Json(value);
     }
