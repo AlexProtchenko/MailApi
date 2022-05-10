@@ -2,6 +2,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Web;
 using MailApi.Data.Interfaces;
 using MailApi.Data.Models;
+using MailApi.Exceptions;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MailApi.Controllers;
@@ -28,6 +29,8 @@ public class GetContentController : Controller
     [HttpGet("users/department")]
     public JsonResult GetUsersDepartment([FromBody] User value)
     {
+        if (value is null | value?.DepartmentId == 0 )
+            throw new MailException.MailValidationException("Wrong json request");
         var content = _repo.GetUserDepartment(value);
         return Json(content);
     }
