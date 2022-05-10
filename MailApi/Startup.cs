@@ -15,16 +15,20 @@ namespace MailApi
             _confstring = new ConfigurationBuilder().SetBasePath(hostEnv.ContentRootPath).AddJsonFile("dbsetting.json")
                 .Build();
         }
-        public void ConfigureServices(IServiceCollection services) {
+        public void ConfigureServices(IServiceCollection services)
+        {
+            services.AddTransient<ExceptionHandlingMiddleware>();
             services.AddDbContext<AppDbContent>(options => options.UseNpgsql(_confstring.GetConnectionString("DefaultConnection")));
             services.AddMvc(options => options.EnableEndpointRouting = false);
             services.AddTransient<IContent, ContentRepository>(); 
             services.AddTransient<IGetContent, GetContentRepository>(); 
         }
 
-        public void Configure(IApplicationBuilder app, IHostEnvironment env) 
+        public void Configure(IApplicationBuilder app, IHostEnvironment env)
         {
-            app.UseDeveloperExceptionPage();
+            if (env.IsDevelopment())
+                app.UseDeveloperExceptionPage();
+            app.UseMiddleware<ExceptionHandlingMiddleware>();
             app.UseStatusCodePages();
             app.UseMvcWithDefaultRoute();
             

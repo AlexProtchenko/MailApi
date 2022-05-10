@@ -1,5 +1,6 @@
 using MailApi.Data.Interfaces;
 using MailApi.Data.Models;
+using MailApi.Exceptions;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MailApi.Controllers;
@@ -23,6 +24,8 @@ public class DepartmentController : Controller
     [HttpPost]
     public JsonResult AddDepartment([FromBody] Department value)
     {
+        if (value is null | value?.Name is null)
+            throw new MailException.MailValidationException("Wrong json request");
         _repo.Add(value);
         return Json(value);
     }

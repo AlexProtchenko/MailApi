@@ -62,11 +62,9 @@ public class ContentRepository : IContent
         var department = _appDbContent.Departments.FirstOrDefault(c => c.DepartmentId == value.DepartmentId);
 
         if (value.Name != null)
-        {
             department.Name = value.Name;
-        }
-        
 
-        _appDbContent.SaveChanges();
+
+            _appDbContent.SaveChanges();
     }
 }
