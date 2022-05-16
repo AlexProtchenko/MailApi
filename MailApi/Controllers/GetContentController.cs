@@ -1,5 +1,3 @@
-using System.ComponentModel.DataAnnotations;
-using System.Web;
 using MailApi.Data.Interfaces;
 using MailApi.Data.Models;
 using MailApi.Exceptions;
@@ -30,7 +28,7 @@ public class GetContentController : Controller
     public JsonResult GetUsersDepartment([FromBody] User value)
     {
         if (value is null | value?.DepartmentId == 0 )
-            throw new MailException.MailValidationException("Wrong json request");
+            throw new MailException.MailValidationException();
         var content = _repo.GetUserDepartment(value);
         return Json(content);
     }

@@ -1,5 +1,6 @@
 {
   "ConnectionStrings": {
-    "DefaultConnection": "Server=localhost;Database=postgres;User Id=postgres;Password=password"
+    "DefaultConnection": "Server=localhost;Database=postgres;User Id=postgres;Password=password",
+    "DockerConnection": "Server=postgres;Database=postgres;User Id=postgres;Password=password"
 }
 }

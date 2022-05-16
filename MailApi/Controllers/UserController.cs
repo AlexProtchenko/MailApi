@@ -18,7 +18,7 @@ public class UserController : Controller
     public JsonResult AddUser([FromBody] User value) 
     {
         if (value is null | value?.Name is null | value?.DepartmentId == 0)
-            throw new MailException.MailValidationException("Wrong json request");
+            throw new MailException.MailValidationException();
         value.Desc ??= "";
         _repo.Add(value);
         return Json(value);
@@ -28,7 +28,7 @@ public class UserController : Controller
     public JsonResult DelUser([FromBody] User value) 
     {
         if (value is null | value?.UserId == 0)
-            throw new MailException.MailValidationException("Wrong json request");
+            throw new MailException.MailValidationException();
         _repo.Delete(value);
         return Json(value);
     }
@@ -37,7 +37,7 @@ public class UserController : Controller
     public JsonResult UpdateUser([FromBody] User value)
     {
         if (value is null | value?.UserId == 0)
-            throw new MailException.MailValidationException("Wrong json request");
+            throw new MailException.MailValidationException();
         _repo.Update(value);
         return Json(value);
     }

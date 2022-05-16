@@ -18,7 +18,7 @@ public class DepartmentController : Controller
     public JsonResult UpdateDepartment([FromBody] Department value)
     {
         if (value is null | value?.Name is null | value?.DepartmentId == 0)
-            throw new MailException.MailValidationException("Wrong json request");
+            throw new MailException.MailValidationException();
         _repo.Update(value);
         return Json(value);
     }
@@ -27,7 +27,7 @@ public class DepartmentController : Controller
     public JsonResult AddDepartment([FromBody] Department value)
     {
         if (value is null | value?.Name is null)
-            throw new MailException.MailValidationException("Wrong json request");
+            throw new MailException.MailValidationException();
         _repo.Add(value);
         return Json(value);
     }
@@ -36,7 +36,7 @@ public class DepartmentController : Controller
     public JsonResult DelDepartment([FromBody] Department value)
     {
         if (value is null | value?.DepartmentId == 0)
-            throw new MailException.MailValidationException("Wrong json request");
+            throw new MailException.MailValidationException();
         _repo.Delete(value);
         return Json(value);
     }
