@@ -24,10 +24,16 @@ dotnet run
 2. ```console
    docker-compose up
    ```
+   
+## Authentication
+[GET]
+_[http://{host}:{port}/api/jwt]()_ - get jwt token for 15 minutes
 
 ## Routes
+_all requests needs jwt token in header to authentication_
+
 [POST]
-_[http://{host}:{port}/department]()_ - add new Department to DB
+_[http://{host}:{port}/api/department]()_ - add new Department to DB
 
 Example for Body content
 ```json
@@ -37,7 +43,7 @@ Example for Body content
 ```
 
 [POST]
-_[http://{host}:{port}/user]()_ - add new User to DB
+_[http://{host}:{port}/api/user]()_ - add new User to DB
 
 ```json
 {
@@ -48,7 +54,7 @@ _[http://{host}:{port}/user]()_ - add new User to DB
 ```
 
 [PUT]
-_[http://{host}:{port}/department]()_ - update Department in DB
+_[http://{host}:{port}/api/department]()_ - update Department in DB
 
 ```json
 {
@@ -58,7 +64,7 @@ _[http://{host}:{port}/department]()_ - update Department in DB
 ```
 
 [PUT]
-_[http://{host}:{port}/user]()_ - update User in DB
+_[http://{host}:{port}/api/user]()_ - update User in DB
 
 ```json
 {
@@ -96,13 +102,13 @@ _[http://{host}:{port}/api/users/department]()_ - get Users by Department
 }
 ```
 [GET]
-_[http://{host}:{port}/pageable_users?page=1&size=2?page=2&size=2]()_ - get pageable Users
+_[http://{host}:{port}/api/pageable_users?page=1&size=2?page=2&size=2]()_ - get pageable Users
 
 [GET]
-_[http://{host}:{port}/users]()_ - get all Users
+_[http://{host}:{port}/api/users]()_ - get all Users
 
 [GET]
-_[http://{host}:{port}/departments]()_ - get all Departments
+_[http://{host}:{port}/api/departments]()_ - get all Departments
 
 ## Database
 
