@@ -6,44 +6,47 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace MailApi;
 
-public class ExceptionHandlingMiddleware: IMiddleware
+public class Middleware : IMiddleware
 {
     private readonly IConfiguration _configuration;
 
-    public ExceptionHandlingMiddleware(IConfiguration configuration)
+    public Middleware(IConfiguration configuration)
     {
         _configuration = configuration;
     }
+
     public async Task InvokeAsync(HttpContext context, RequestDelegate next)
     {
         try
         {
             var token = context.Request.Headers["Authorization"].FirstOrDefault()?.Split(" ").Last();
             var path = context.Request.Path.ToString();
-            
-            if (path == "/api/jwt"){}
-            
+
+            if (path == "/api/jwt")
+            {
+            }
+
             else if (token != null)
                 Validate(token);
-                    
+
             else
                 throw new MailException.MailUnauthorizedException();
-            
+
             await next(context);
         }
-        
+
         catch (MailException.MailUnauthorizedException e)
         {
-            context.Response.StatusCode = (int)HttpStatusCode.Unauthorized;
+            context.Response.StatusCode = (int) HttpStatusCode.Unauthorized;
             await context.Response.WriteAsync(e.Message);
         }
-        
+
         catch (MailException.MailValidationException e)
         {
-            context.Response.StatusCode = (int)HttpStatusCode.BadRequest;
+            context.Response.StatusCode = (int) HttpStatusCode.BadRequest;
             await context.Response.WriteAsync(e.Message);
         }
-        
+
         catch (Exception e)
         {
             context.Response.StatusCode = 500;

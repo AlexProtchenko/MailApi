@@ -17,7 +17,7 @@ namespace MailApi
         }
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddTransient<ExceptionHandlingMiddleware>();
+            services.AddTransient<Middleware>();
             services.AddDbContext<AppDbContent>(options => options.UseNpgsql(_confstring.GetConnectionString("DefaultConnection")));
             services.AddMvc(options => options.EnableEndpointRouting = false);
             services.AddTransient<IContent, ContentRepository>(); 
@@ -28,11 +28,10 @@ namespace MailApi
         {
             if (env.IsDevelopment())
                 app.UseDeveloperExceptionPage();
-            app.UseMiddleware<ExceptionHandlingMiddleware>();
+            app.UseMiddleware<Middleware>();
             app.UseStatusCodePages();
             app.UseMvcWithDefaultRoute();
-            
+
         }
-        
     }
 }
